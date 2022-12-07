@@ -20,4 +20,16 @@ class Api::V1::MealsController < ApplicationController
                    data: ActiveModelSerializers::SerializableResource.new(result) },
            status: :ok
   end
+
+  def show
+    id_meal = params['id']
+    result = Meal.find(id_meal)
+
+    render json: { message: ['Meal fetched successfully'],
+                   status: 200,
+                   type: 'Success',
+                   lang: params[:lang],
+                   data: ActiveModelSerializers::SerializableResource.new(result) },
+           status: :ok
+  end
 end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'hungers(/:lang)', to: "hungers#index", defaults: { lang: 'EN' }
+      get 'meal/:id(/:lang)', to: "meals#show", defaults: { lang: 'EN' }
       get 'country/:country/city/:city(/:lang)/meals', to: "meals#index", defaults: { lang: 'EN' }
     end
   end
