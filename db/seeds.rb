@@ -68,5 +68,3 @@ AvoidFood.create(name: "pork",avoid_food_category:)
 AvoidFood.create(name: "veal",avoid_food_category:)
 AvoidFood.create(name: "venison",avoid_food_category:)
 AvoidFood.create(name: "goat",avoid_food_category:)
-
-

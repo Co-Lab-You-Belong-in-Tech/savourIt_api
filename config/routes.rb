@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get '/:lang/meal/:id', to: "meals#show"
       get '/:lang/country/:country/city/:city/meals', to: "meals#index"
       get '/:lang/country/:country/city/:city/fancy', to: "categories#fancy"
+      get '/:lang/avoid_meals', to: "avoidcategories#index"
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

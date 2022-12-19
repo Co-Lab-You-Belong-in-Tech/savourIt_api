@@ -4,7 +4,21 @@ class Api::V1::MealsController < ApplicationController
     max_budget = params['maxBudget'] || 10_000_000
     id_hunger = params['id_hunger']
 
-    result = Meal
+    if params['categories'].nil?
+      result = Meal.all
+    else
+      categories = params['categories'].split(':')
+
+      sub = Meal.left_outer_joins(:category_ingredient_meals)
+        .where(category_ingredient_meals: { category_ingredient_id: categories }).pluck(:id)
+
+      result = Meal.where.not(id: sub)
+
+    end
+
+    #   r = Meal.select(:id)
+
+    result = result
       .where('price >= :min_budget AND price <= :max_budget', min_budget:, max_budget:)
       .where(desactivate: false)
 
