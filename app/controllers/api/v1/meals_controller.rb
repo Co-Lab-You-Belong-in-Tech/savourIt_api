@@ -4,18 +4,34 @@ class Api::V1::MealsController < ApplicationController
     max_budget = params['maxBudget'] || 10_000_000
     id_hunger = params['id_hunger']
 
-    if params['categories'].nil?
+    if params['allergens'].nil?
       result = Meal.all
     else
-      categories = params['categories'].split(':')
+      allergens = params['allergens'].split(':')
 
-      sub = Meal.left_outer_joins(:category_ingredient_meals)
-        .where(category_ingredient_meals: { category_ingredient_id: categories }).pluck(:id)
+      sub = Meal.joins(:ingredients).where(ingredients: { allergen_id: allergens }).pluck(:id)
 
       result = Meal.where.not(id: sub)
 
     end
 
+    # p '---------------------'
+    # p result.size
+
+    if params['categories'].nil?
+      # result = Meal.all
+    else
+      categories = params['categories'].split(':')
+
+      sub = result.left_outer_joins(:category_ingredient_meals)
+        .where(category_ingredient_meals: { category_ingredient_id: categories }).pluck(:id)
+
+      result = result.where.not(id: sub)
+
+    end
+
+    # p '---------------------'
+    # p result.size
     #   r = Meal.select(:id)
 
     result = result
@@ -25,6 +41,9 @@ class Api::V1::MealsController < ApplicationController
     result = result.joins(:categories).where('hunger_id= :id_hunger', id_hunger:) if id_hunger
 
     result = result.order('RANDOM()')
+
+    # p '---------------------****'
+    # p result.size
 
     render json: { message: ['Meal list fetched successfully'],
                    status: 200,
