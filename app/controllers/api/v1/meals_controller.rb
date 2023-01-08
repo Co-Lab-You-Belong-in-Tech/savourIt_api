@@ -18,8 +18,8 @@ class Api::V1::MealsController < ApplicationController
       result = Meal.where.not(id: sub)
     end
 
-    unless params['categories'].nil?
-      categories = params['categories'].split(':')
+    unless params['avoid_meals'].nil?
+      categories = params['avoid_meals'].split(':')
       sub = result.left_outer_joins(:category_ingredient_meals)
         .where(category_ingredient_meals: { category_ingredient_id: categories }).pluck(:id)
 
