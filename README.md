@@ -68,14 +68,30 @@ Visit http://localhost:3001/ in your browser.
 
 ### API documentation
 
-- Get list of hungers [/api/v1/:lang//hungers](https://api-savourit.onrender.com/api/v1/en/hungers)
-- Get list of allergens [/api/v1/:lang/allergens](https://api-savourit.onrender.com/api/v1/en/allergens)
-- Get list of categories [/api/v1/:lang/categories](https://api-savourit.onrender.com/api/v1/en/categories)
-- Get list of avoid meals [/api/v1/:lang/avoid_meals](https://api-savourit.onrender.com/api/v1/en/avoid_meals)
-- Get meal's detail [/api/v1/:lang/meal/:id](https://api-savourit.onrender.com/api/v1/en/meal/1)
-- Get list of fancy meals [/api/v1/:lang/country/:country/city/:city/fancy](https://api-savourit.onrender.com/api/v1/fr/country/canada/city/vancouver/fancy)
-- Get list of meals [/api/v1/:lang/country/:country/city/:city/meals](https://api-savourit.onrender.com/api/v1/fr/country/canada/city/vancouver/meals)
-- Get list of meals filtered[/api/v1/:lang/country/:country/city/:city/meals?minBudget=X&maxBudget=Y&id_hunger=Z&id_fancy=A&allergens=B&avoid_meals=C](https://api-savourit.onrender.com/api/v1/fr/country/canada/city/vancouver/meals?minBudget=1&maxBudget=20&id_hunger=1&id_fancy=1&allergens=1&avoid_meals=1)
+- Get list of hungers 
+      [/api/v1/:lang//hungers](https://api-savourit.onrender.com/api/v1/en/hungers)
+
+- Get list of allergens 
+      [/api/v1/:lang/allergens](https://api-savourit.onrender.com/api/v1/en/allergens)
+
+- Get list of categories 
+      [/api/v1/:lang/categories](https://api-savourit.onrender.com/api/v1/en/categories)
+
+- Get list of avoid meals 
+      [/api/v1/:lang/avoid_meals](https://api-savourit.onrender.com/api/v1/en/avoid_meals)
+
+- Get meal's detail 
+      [/api/v1/:lang/meal/:id](https://api-savourit.onrender.com/api/v1/en/meal/1)
+
+- Get list of fancy meals 
+      [/api/v1/:lang/country/:country/city/:city/fancy](https://api-savourit.onrender.com/api/v1/en/country/canada/city/vancouver/fancy)
+
+- Get list of meals 
+      [/api/v1/:lang/country/:country/city/:city/meals](https://api-savourit.onrender.com/api/v1/en/country/canada/city/vancouver/meals)
+
+- Get list of meals filtered
+      [/api/v1/:lang/country/:country/city/:city/meals?minBudget=X&maxBudget=Y&id_hunger=Z&id_fancy=A&allergens=B&avoid_meals=C](https://api-savourit.onrender.com/api/v1/en/country/canada/city/vancouver/meals?minBudget=1&maxBudget=20&id_hunger=1&id_fancy=1&allergens=1&avoid_meals=1)
+
 - Filter meals :
   - minBudget: float
   - maxBudget: float
@@ -85,13 +101,14 @@ Visit http://localhost:3001/ in your browser.
   - avoid_meals: string, ids of avoid meals [Example: 4:5:6]
 
 All filters are optional.
+Language and City are not supported.
 
 ## Authors
 
-👤 **JihaneH**
+👤 **J. AFLIH**
 
-- GitHub: [@githubhandle](https://github.com/jaflih)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/jaflih/)
+- [GitHub](https://github.com/jaflih)
+- [LinkedIn](https://www.linkedin.com/in/jaflih/)
 
 ## 🤝 Contributing
 
