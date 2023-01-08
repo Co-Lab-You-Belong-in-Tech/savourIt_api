@@ -7,11 +7,11 @@ class MealSerializer < ActiveModel::Serializer
   end
 
   def category
-    object.categories.first.name
+    object.categories.first&.name
   end
 
   def hunger
-    object.categories.first.hunger.value
+    object.categories.first&.hunger&.value
   end
 
   def rating_value
