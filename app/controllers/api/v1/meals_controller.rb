@@ -1,22 +1,30 @@
 class Api::V1::MealsController < ApplicationController
   def index
-    min_budget = params['minBudget'] || 0
+    min_budget = params['minBudget'] || 1
     max_budget = params['maxBudget'] || 10_000_000
     id_hunger = params['id_hunger']
+    id_fancy = params['id_fancy']
 
-    if params['categories'].nil?
-      result = Meal.all
-    else
-      categories = params['categories'].split(':')
+    result = if params['id_fancy'].nil?
+               Meal.all
+             else
+               Meal.joins(:categories).where('category_id= :id_fancy', id_fancy:)
+             end
 
-      sub = Meal.left_outer_joins(:category_ingredient_meals)
-        .where(category_ingredient_meals: { category_ingredient_id: categories }).pluck(:id)
+    unless params['allergens'].nil?
+      allergens = params['allergens'].split(':')
+      sub = Meal.joins(:ingredients).where(ingredients: { allergen_id: allergens }).pluck(:id)
 
       result = Meal.where.not(id: sub)
-
     end
 
-    #   r = Meal.select(:id)
+    unless params['avoid_meals'].nil?
+      categories = params['avoid_meals'].split(':')
+      sub = result.left_outer_joins(:category_ingredient_meals)
+        .where(category_ingredient_meals: { category_ingredient_id: categories }).pluck(:id)
+
+      result = result.where.not(id: sub)
+    end
 
     result = result
       .where('price >= :min_budget AND price <= :max_budget', min_budget:, max_budget:)
