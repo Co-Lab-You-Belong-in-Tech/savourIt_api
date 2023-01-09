@@ -85,6 +85,9 @@ Visit http://localhost:3001/ in your browser.
 
 - Get list of fancy meals 
       [/api/v1/:lang/country/:country/city/:city/fancy](https://api-savourit.onrender.com/api/v1/en/country/canada/city/vancouver/fancy)
+      
+- Get list of fancy meals filtered by hungry
+      [/api/v1/:lang/country/:country/city/:city/fancy?id_hungry=1](https://api-savourit.onrender.com/api/v1/en/country/canada/city/vancouver/fancy?id_hungry=19)
 
 - Get list of meals 
       [/api/v1/:lang/country/:country/city/:city/meals](https://api-savourit.onrender.com/api/v1/en/country/canada/city/vancouver/meals)
