@@ -12,7 +12,13 @@ class Api::V1::CategoriesController < ApplicationController
 
   def fancy
     nb_fancy = params[:nb_fancy] || 5
-    c = Category.all.sample(nb_fancy)
+    id_hungry = params[:id_hungry]
+
+    c = if params['id_hungry'].nil?
+          Category.all.sample(nb_fancy)
+        else
+          Category.where('hunger_id= :id_hungry', id_hungry:).sample(nb_fancy)
+        end
 
     render json: { message: ['Fancy list fetched successfully'],
                    status: 200,
