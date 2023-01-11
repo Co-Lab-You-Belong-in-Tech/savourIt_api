@@ -22,6 +22,7 @@ class FancySerializer < ActiveModel::Serializer
         price: o.price,
         description: o.description,
         image_url: o.image_url,
+        restaurant: o.restaurant.name,
         rating_value: o.restaurant.uber.rating_value,
         rating_count: o.restaurant.uber.rating_count,
         currency_code: o.restaurant.currency_code,
