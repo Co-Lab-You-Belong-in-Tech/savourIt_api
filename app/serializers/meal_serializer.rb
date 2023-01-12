@@ -1,6 +1,6 @@
 class MealSerializer < ActiveModel::Serializer
   attributes :id, :title, :price, :description, :image_url, :category, :hunger, :rating_value, :rating_count,
-             :currency_code, :restaurant, :uber_url, :doordash_link, :delivery_time
+             :currency_code, :restaurant, :uber_url, :doordash_link, :delivery_time, :category_price
 
   def currency_code
     object.restaurant.currency_code
@@ -24,6 +24,14 @@ class MealSerializer < ActiveModel::Serializer
 
   def restaurant
     object.restaurant.name
+  end
+
+  def category_price
+    if object.restaurant.doordash.nil?
+      ''
+    else
+      object.restaurant.doordash.category_price
+    end
   end
 
   def delivery_time
